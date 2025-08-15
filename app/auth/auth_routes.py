@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from models import User, UserCreate
+from app.models import User, UserCreate
 from passlib.context import CryptContext
 from datetime import datetime, timezone, timedelta
 from jose import jwt, JWTError
 import os
 from dotenv import load_dotenv
-from database import collection
+from app.database import collection
 load_dotenv()
 
 user_router = APIRouter()
@@ -118,3 +118,4 @@ def get_recent_trans(username: str = Depends(verify_token)):
         reverse=True,
     )
     return {"view": lst[0:5]}
+
