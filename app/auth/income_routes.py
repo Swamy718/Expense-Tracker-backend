@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from .auth_routes import verify_token
-from models import Income, IncomeCreate
-from database import collection
+from app.models import Income, IncomeCreate
+from app.database import collection
 from datetime import datetime, time
 
 income_router = APIRouter()
@@ -142,3 +142,4 @@ def get_recent_incomes(username: str = Depends(verify_token)):
         reverse=True,
     )
     return {"incomes": incomes[0:5]}
+
