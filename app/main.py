@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from database import collection
+from .database import collection
 from auth.auth_routes import user_router
 from auth.income_routes import income_router
 from auth.expense_routes import expense_router
@@ -17,3 +17,4 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
