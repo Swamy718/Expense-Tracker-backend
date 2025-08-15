@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from .auth_routes import verify_token
-from models import Expense, ExpenseCreate
-from database import collection
+from app.models import Expense, ExpenseCreate
+from app.database import collection
 from datetime import datetime, time
 
 expense_router = APIRouter()
@@ -133,3 +133,4 @@ def get_subcategory_expenses(username: str = Depends(verify_token)):
         )
 
     return {"expenses": dct}
+
